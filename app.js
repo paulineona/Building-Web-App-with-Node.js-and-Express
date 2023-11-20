@@ -4,11 +4,14 @@ const chalk = require('chalk'); // Chalk for colored console output
 const debug = require('debug')('app'); // Debug for debugging
 const morgan = require('morgan'); // Morgan for HTTP request logging
 const path = require('path'); // Path for working with file and directory paths
+const { Session } = require('inspector');
 
 // Set the port number to listen to
 const port = process.env.PORT || 5000;
 // Create an instance of an Express application
 const app = express();
+// Create a new router object for handling 'session' routes
+const sessionRouter = express.Router();
 
 // Use Morgan middleware for logging HTTP requests in 'tiny' format
 app.use(morgan('tiny'));
@@ -20,6 +23,9 @@ app.set("views", "./src/views");
 
 // Set the view engine that Express will use to render views. In this case, it's set to 'ejs'
 app.set('view engine', 'ejs');
+
+// Use the sessionRouter for all requests made to '/sessions'
+app.use('/sessions', sessionRouter);
 
 // Define a route handler for GET requests made to the root path ('/')
 app.get('/', (req, res) => {
