@@ -4,7 +4,6 @@ const chalk = require('chalk'); // Chalk for colored console output
 const debug = require('debug')('app'); // Debug for debugging
 const morgan = require('morgan'); // Morgan for HTTP request logging
 const path = require('path'); // Path for working with file and directory paths
-const { Session } = require('inspector');
 
 // Set the port number to listen to
 const port = process.env.PORT || 5000;
