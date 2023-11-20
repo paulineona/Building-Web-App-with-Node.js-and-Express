@@ -5,6 +5,8 @@ const debug = require('debug')('app'); // Debug for debugging
 const morgan = require('morgan'); // Morgan for HTTP request logging
 const path = require('path'); // Path for working with file and directory paths
 
+// Set the port number to listen to
+const port = process.env.PORT || 5000;
 // Create an instance of an Express application
 const app = express();
 
@@ -22,7 +24,7 @@ app.get('/', (req, res) => {
 // Start the server and listen on port 5000
 app.listen(5000, () => {
     // Log a debug message indicating the server is running
-    debug(`Listening on port ${chalk.greenBright('5000')}`);
+    debug(`Listening to port ${chalk.green(port)}`);
     // An alternative way to log the message using console.log
     // console.log(`Listening on port ${chalk.greenBright('5000')}`);
 })  
