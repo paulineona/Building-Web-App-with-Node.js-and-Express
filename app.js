@@ -15,10 +15,16 @@ app.use(morgan('tiny'));
 // Serve static files (like CSS, images, JavaScript files) from the 'public' directory
 app.use(express.static(path.join(__dirname, '/public')));
 
+// Set the directory where Express will look for view templates
+app.set("views", "./src/views");
+
+// Set the view engine that Express will use to render views. In this case, it's set to 'ejs'
+app.set('view engine', 'ejs');
+
 // Define a route handler for GET requests made to the root path ('/')
 app.get('/', (req, res) => {
     // Send a response back to the client
-    res.send('Hello from my app')
+    res.render('index', { title: 'Globalmantics', data: ['a', 'b', 'c'] });
 })
 
 // Start the server and listen on port 5000
